@@ -3,15 +3,23 @@ import { Button } from "@/components/ui/button";
 import { MessageCircle, Menu, X } from "lucide-react";
 import { useTranslations } from '@/i18n/utils'; // Changed import path
 
+type HeaderLang = 'en' | 'he';
+
 interface HeaderProps {
-  lang: 'en' | 'he';
+  lang: HeaderLang;
 }
+
+const defaultLocale: HeaderLang = 'he';
 
 const Header: React.FC<HeaderProps> = ({ lang }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const t = useTranslations(lang);
+  const pathPrefix = lang === defaultLocale ? '' : `/${lang}`;
+  const buildSectionHref = (section: string) => `${pathPrefix}/#${section}`;
+  const blogHref = `${pathPrefix}/blog`;
+  const homeHref = lang === defaultLocale ? '/' : `${pathPrefix}/`;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -51,13 +59,12 @@ const Header: React.FC<HeaderProps> = ({ lang }) => {
   }, []);
 
   const handleWhatsAppClick = () => {
-    window.open("https://wa.me/972500000000", "_blank");
+    window.open("https://wa.me/972525831644", "_blank");
   };
 
-  const changeLanguage = (newLang: 'en' | 'he') => {
+  const changeLanguage = (newLang: HeaderLang) => {
     const url = new URL(window.location.href);
     const pathSegments = url.pathname.split('/').filter(Boolean);
-    const defaultLocale = 'en'; // Assuming 'en' is the default locale from astro.config.mjs
 
     let newPath = '';
 
@@ -80,6 +87,9 @@ const Header: React.FC<HeaderProps> = ({ lang }) => {
     window.location.href = url.toString();
   };
 
+  const logoSrc = lang === 'he' ? "/logo_hebrew_white.png" : "/logo_english_white.png";
+  const logoAlt = lang === 'he' ? "נועה מרתיק | פסיכולוגיית ספורט" : "Noa Meretyk | Sports Psychology";
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled || isMobileMenuOpen ? "header-background backdrop-blur-sm shadow-md" : "bg-transparent"
@@ -87,42 +97,42 @@ const Header: React.FC<HeaderProps> = ({ lang }) => {
     >
       <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <a href="/" className="cursor-pointer">
-            <h2 className={`text-xl font-bold text-white`}>{t('header.title')}</h2>
+          <a href={homeHref} className="cursor-pointer">
+            <img src={logoSrc} alt={logoAlt} className="h-16 w-auto" />
           </a>
         </div>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
           <a
-            href={lang === 'en' ? "/#services" : `/${lang}/#services`}
+            href={buildSectionHref('services')}
             data-scroll-to
             className="text-white hover:opacity-80 transition-opacity"
           >
             {t('header.services')}
           </a>
           <a
-            href={lang === 'en' ? "/#about" : `/${lang}/#about`}
+            href={buildSectionHref('about')}
             data-scroll-to
             className="text-white hover:opacity-80 transition-opacity"
           >
             {t('header.about')}
           </a>
           <a
-            href={lang === 'en' ? "/#testimonials" : `/${lang}/#testimonials`}
+            href={buildSectionHref('testimonials')}
             data-scroll-to
             className="text-white hover:opacity-80 transition-opacity"
           >
             {t('header.testimonials')}
           </a>
           {/* <a
-            href="/blog"
+            href={blogHref}
             className="text-white hover:opacity-80 transition-opacity"
           >
             {t('header.blog')}
           </a> */}
           <a
-            href={lang === 'en' ? "/#contact" : `/${lang}/#contact`}
+            href={buildSectionHref('contact')}
             data-scroll-to
             className="text-white hover:opacity-80 transition-opacity"
           >
@@ -156,34 +166,34 @@ const Header: React.FC<HeaderProps> = ({ lang }) => {
           <div className="absolute top-full left-0 right-0 border-b border-border md:hidden header-background">
             <div className="container mx-auto px-4 py-4 flex flex-col gap-4">
               <a
-                href={lang === 'en' ? "/#services" : `/${lang}/#services`}
+                href={buildSectionHref('services')}
                 data-scroll-to
                 className="text-left text-white hover:opacity-80 transition-opacity py-2"
               >
                 {t('header.services')}
               </a>
               <a
-                href={lang === 'en' ? "/#about" : `/${lang}/#about`}
+                href={buildSectionHref('about')}
                 data-scroll-to
                 className="text-left text-white hover:opacity-80 transition-opacity py-2"
               >
                 {t('header.about')}
               </a>
               <a
-                href={lang === 'en' ? "/#testimonials" : `/${lang}/#testimonials`}
+                href={buildSectionHref('testimonials')}
                 data-scroll-to
                 className="text-left text-white hover:opacity-80 transition-opacity py-2"
               >
                 {t('header.testimonials')}
               </a>
               <a
-                href="/blog"
+                href={blogHref}
                 className="text-left text-white hover:opacity-80 transition-opacity py-2"
               >
                 {t('header.blog')}
               </a>
               <a
-                href={lang === 'en' ? "/#contact" : `/${lang}/#contact`}
+                href={buildSectionHref('contact')}
                 data-scroll-to
                 className="text-left text-white hover:opacity-80 transition-opacity py-2"
               >

@@ -1,8 +1,7 @@
-import { AstroGlobal } from 'astro';
 import en from './en.json';
 import he from './he.json';
 
-export const defaultLang = 'en';
+export const defaultLang = 'he';
 export const languages = {
   en: 'English',
   he: 'עברית',

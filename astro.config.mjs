@@ -10,8 +10,8 @@ export default defineConfig({
   site: 'https://www.pt-tlv.com',
   integrations: [react(), sitemap()],
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en', 'he'],
+    defaultLocale: 'he',
+    locales: ['he', 'en'],
   },
   vite: {
     plugins: [tailwindcss()]

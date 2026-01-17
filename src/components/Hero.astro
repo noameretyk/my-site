@@ -1,8 +1,8 @@
 ---
 import { Button } from "@/components/ui/button";
 import { MessageCircle } from "lucide-react";
-import heroImage from "@/assets/hero-physiotherapy.jpg";
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import heroImage from "@/assets/hero-basketball.jpg";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -13,14 +13,16 @@ const t = useTranslations(lang);
 >
   <div
     class="absolute inset-0 z-0"
-    style={`background-image: linear-gradient(rgba(25, 110, 127, 0.85), rgba(25, 110, 127, 0.85)), url(${heroImage.src}); background-size: cover; background-position: center;`}
+    style={`background-image: linear-gradient(rgba(62, 132, 117, 0.85), rgba(62, 132, 117, 0.85)), url(${heroImage.src}); background-size: cover; background-position: center;`}
   >
   </div>
   <div class="container mx-auto px-4 z-10 text-center text-white">
-    <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight" set:html={t('hero.headline')}>
-    </h1>
+    <h1
+      class="text-4xl md:text-6xl font-bold mb-6 leading-tight"
+      set:html={t("hero.headline")}
+    />
     <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto opacity-95">
-      {t('hero.subheadline')}
+      {t("hero.subheadline")}
     </p>
     <div class="flex flex-col sm:flex-row gap-4 justify-center">
       <Button
@@ -29,7 +31,7 @@ const t = useTranslations(lang);
         client:load
       >
         <MessageCircle className="mr-2 h-5 w-5" />
-        {t('hero.bookAppointment')}
+        {t("hero.bookAppointment")}
       </Button>
       <Button
         size="lg"
@@ -38,7 +40,7 @@ const t = useTranslations(lang);
         className="text-lg px-8 py-6 bg-white/10 backdrop-blur-sm border-white text-white hover:bg-white/20 shadow-md shadow-white/50 transition-all duration-300"
         client:load
       >
-        {t('hero.learnMore')}
+        {t("hero.learnMore")}
       </Button>
     </div>
   </div>
@@ -47,7 +49,7 @@ const t = useTranslations(lang);
 <script>
   const whatsAppButton = document.querySelector(".bg-secondary");
   whatsAppButton?.addEventListener("click", () => {
-    window.open("https://wa.me/972500000000", "_blank");
+    window.open("https://wa.me/972525831644", "_blank");
   });
 
   const learnMoreButton = document.querySelector("#learn-more-button");

@@ -1,5 +1,5 @@
 ---
-import placeholderImage from '../../public/placeholder.svg';
+import placeholderImage from "../../public/placeholder.svg";
 import "../styles/global.css";
 import {
 	getLangFromUrl,
@@ -16,7 +16,7 @@ export interface Props {
 }
 
 const { title, description, image = placeholderImage.src } = Astro.props;
-const phoneNumber = "+972-50-000-0000";
+const phoneNumber = "+972-54-213-2566";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -54,19 +54,19 @@ const currentPath = Astro.url.pathname.replace(/\/[a-z]{2}\//, "/");
 		<script type="application/ld+json">
 			{
 				"@context": "https://schema.org",
-				"@type": "Physiotherapy",
+				"@type": "MedicalBusiness",
 				"name": "{t('schema.name')}",
 				"description": "{t('schema.description')}",
-				"url": "https://www.pt-tlv.com",
-				"image": "https://www.pt-tlv.com/_astro/headshot.KghQ-GDN_abifr.webp",
+				"url": "https://www.noameretyk.com",
+				"image": "https://www.noameretyk.com/_astro/headshot.KghQ-GDN_abifr.webp",
 				"telephone": "{phoneNumber}",
-				"email": "effie@physiotherapy.co.il",
+				"email": "hello@noameretyk.com",
 				"founder": {
 					"@type": "Person",
-					"name": "Effie Beniacar", // Assuming this is the full name
-					"url": "https://www.pt-tlv.com/about", // Link to an about page for Effie
-					"image": "https://www.pt-tlv.com/_astro/headshot.KghQ-GDN_abifr.webp",
-					"jobTitle": "Physiotherapist"
+					"name": "Noa Meretyk",
+					"url": "https://www.noameretyk.com/about",
+					"image": "https://www.noameretyk.com/_astro/headshot.KghQ-GDN_abifr.webp",
+					"jobTitle": "Sports Psychologist"
 				},
 				"address": {
 					"@type": "PostalAddress",
@@ -122,7 +122,7 @@ const currentPath = Astro.url.pathname.replace(/\/[a-z]{2}\//, "/");
 						}
 					]
 				},
-				"sameAs": ["https://wa.me/972500000000"]
+				"sameAs": ["https://wa.me/972525831644"]
 			}
 		</script>
 

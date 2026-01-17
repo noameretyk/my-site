@@ -1,25 +1,31 @@
 ---
 import { getCollection } from 'astro:content';
 import BlogPostPage from '../../../components/blog/BlogPostPage.astro';
+import { languages } from '../../../i18n/utils';
+
+type SupportedLang = keyof typeof languages;
 
 export async function getStaticPaths() {
   const blogPosts = await getCollection('blog');
-  return blogPosts.map((post) => ({
-    params: { lang: 'he', slug: post.slug },
-    props: { post },
-  }));
+  return blogPosts.flatMap((post) =>
+    Object.keys(languages).map((lang) => ({
+      params: { lang, slug: post.slug },
+      props: { post },
+    })),
+  );
 }
 
 const { lang } = Astro.params;
 
-if (lang !== 'he') {
+if (!(lang in languages)) {
   throw new Error('Unsupported locale');
 }
 
+const currentLang = lang as SupportedLang;
 const { post } = Astro.props;
 const { Content } = await post.render();
 ---
 
-<BlogPostPage lang="he" post={post}>
+<BlogPostPage lang={currentLang} post={post}>
   <Content slot="content" />
 </BlogPostPage>

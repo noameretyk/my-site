@@ -1,18 +1,21 @@
 ---
 import { getCollection } from 'astro:content';
 import BlogListPage from '../../../components/blog/BlogListPage.astro';
+import { getStaticPathsForLang } from '../../../i18n/utils';
+
+type SupportedLang = 'en' | 'he';
 
 export function getStaticPaths() {
-  return [
-    { params: { lang: 'he' } },
-  ];
+  return getStaticPathsForLang();
 }
 
 const { lang } = Astro.params;
 
-if (lang !== 'he') {
+if (lang !== 'en' && lang !== 'he') {
   throw new Error('Unsupported locale');
 }
+
+const currentLang = lang as SupportedLang;
 
 const blogPosts = (await getCollection('blog'))
   .filter((post) => !post.data.hidden)
@@ -21,4 +24,4 @@ const blogPosts = (await getCollection('blog'))
   );
 ---
 
-<BlogListPage lang="he" blogPosts={blogPosts} />
+<BlogListPage lang={currentLang} blogPosts={blogPosts} />

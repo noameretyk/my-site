@@ -106,10 +106,10 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 210 20% 15%;
 
-    /* Medical teal - trustworthy, professional */
-    --primary: 186 60% 30%;
+    /* Signature jade - confident, grounded */
+    --primary: 167 36% 38%;
     --primary-foreground: 0 0% 100%;
-    --primary-light: 186 60% 92%;
+    --primary-light: 167 36% 90%;
 
     /* Warm coral accent - approachable, caring */
     --secondary: 14 80% 60%;
@@ -127,7 +127,7 @@ All colors MUST be HSL.
 
     --border: 210 15% 88%;
     --input: 210 15% 88%;
-    --ring: 186 60% 40%;
+    --ring: 167 36% 45%;
 
     --radius: 0.75rem;
 
@@ -141,9 +141,9 @@ All colors MUST be HSL.
     --sidebar-ring: var(--ring);
 
     /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(186 60% 40%) 0%, hsl(186 60% 30%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(167 36% 45%) 0%, hsl(167 36% 32%) 100%);
     --gradient-section: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(186 60% 98%) 100%);
-    --header-background: linear-gradient(rgba(25, 110, 127, 0.85), rgba(25, 110, 127, 0.85));
+    --header-background: linear-gradient(rgba(62, 132, 117, 0.85), rgba(62, 132, 117, 0.85));
 
     /* Shadows */
     --shadow-soft: 0 2px 8px hsla(210, 20%, 15%, 0.08);
@@ -164,9 +164,9 @@ All colors MUST be HSL.
     --popover: 210 25% 12%;
     --popover-foreground: 0 0% 95%;
 
-    --primary: 186 60% 50%;
+    --primary: 167 36% 45%;
     --primary-foreground: 0 0% 100%;
-    --primary-light: 186 60% 20%;
+    --primary-light: 167 36% 25%;
 
     --secondary: 14 80% 60%;
     --secondary-foreground: 0 0% 100%;
@@ -183,7 +183,7 @@ All colors MUST be HSL.
 
     --border: 210 25% 20%;
     --input: 210 25% 20%;
-    --ring: 186 60% 50%;
+    --ring: 167 36% 50%;
   }
 }
 

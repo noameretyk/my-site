@@ -2,13 +2,13 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { MessageCircle, Mail, MapPin, Phone } from "lucide-react";
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const phoneNumber = "+972 54-213-2566";
-const emailAddress = "effie.physio@gmail.com";
+const emailAddress = "hello@noameretyk.com";
 ---
 
 <section id="contact" class="py-20 bg-background">
@@ -16,10 +16,10 @@ const emailAddress = "effie.physio@gmail.com";
     <div class="max-w-4xl mx-auto">
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">
-          {t('contact.headline')}
+          {t("contact.headline")}
         </h2>
         <p class="text-lg text-muted-foreground">
-          {t('contact.subheadline')}
+          {t("contact.subheadline")}
         </p>
       </div>
 
@@ -27,21 +27,30 @@ const emailAddress = "effie.physio@gmail.com";
         <CardContent className="p-8">
           <div class="grid md:grid-cols-2 gap-8">
             <div class="space-y-6">
-              <h3 class="text-2xl font-semibold text-foreground mb-4">{t('contact.getInTouch')}</h3>
+              <h3 class="text-2xl font-semibold text-foreground mb-4">
+                {t("contact.getInTouch")}
+              </h3>
 
               <ul class="space-y-6">
                 <li>
                   <div class="flex items-start gap-3">
-                    <MessageCircle client:load className="w-6 h-6 text-primary mt-1" />
+                    <MessageCircle
+                      client:load
+                      className="w-6 h-6 text-primary mt-1"
+                    />
                     <div>
-                      <p class="font-semibold text-foreground mb-1">{t('contact.whatsapp.title')}</p>
-                      <p class="text-muted-foreground">{t('contact.whatsapp.description')}</p>
+                      <p class="font-semibold text-foreground mb-1">
+                        {t("contact.whatsapp.title")}
+                      </p>
+                      <p class="text-muted-foreground">
+                        {t("contact.whatsapp.description")}
+                      </p>
                       <Button
                         variant="link"
                         className="p-0 h-auto text-primary whatsapp-button"
                         client:load
                       >
-                        {t('contact.whatsapp.button')}
+                        {t("contact.whatsapp.button")}
                       </Button>
                     </div>
                   </div>
@@ -51,7 +60,9 @@ const emailAddress = "effie.physio@gmail.com";
                   <div class="flex items-start gap-3">
                     <Phone client:load className="w-6 h-6 text-primary mt-1" />
                     <div>
-                      <p class="font-semibold text-foreground mb-1">{t('contact.phone.title')}</p>
+                      <p class="font-semibold text-foreground mb-1">
+                        {t("contact.phone.title")}
+                      </p>
                       <p class="text-muted-foreground">{phoneNumber}</p>
                     </div>
                   </div>
@@ -61,7 +72,9 @@ const emailAddress = "effie.physio@gmail.com";
                   <div class="flex items-start gap-3">
                     <Mail client:load className="w-6 h-6 text-primary mt-1" />
                     <div>
-                      <p class="font-semibold text-foreground mb-1">{t('contact.email.title')}</p>
+                      <p class="font-semibold text-foreground mb-1">
+                        {t("contact.email.title")}
+                      </p>
                       <p class="text-muted-foreground">{emailAddress}</p>
                     </div>
                   </div>
@@ -71,10 +84,14 @@ const emailAddress = "effie.physio@gmail.com";
                   <div class="flex items-start gap-3">
                     <MapPin client:load className="w-6 h-6 text-primary mt-1" />
                     <div>
-                      <p class="font-semibold text-foreground mb-1">{t('contact.location.title')}</p>
-                      <p class="text-muted-foreground">{t('contact.location.address')}</p>
+                      <p class="font-semibold text-foreground mb-1">
+                        {t("contact.location.title")}
+                      </p>
+                      <p class="text-muted-foreground">
+                        {t("contact.location.address")}
+                      </p>
                       <p class="text-sm text-muted-foreground mt-1">
-                        {t('contact.location.description')}
+                        {t("contact.location.description")}
                       </p>
                     </div>
                   </div>
@@ -82,17 +99,28 @@ const emailAddress = "effie.physio@gmail.com";
               </ul>
             </div>
 
-            <div class="flex flex-col justify-center items-center bg-primary/5 rounded-lg p-8">
-              <MessageCircle client:load className="w-16 h-16 text-primary mb-4" />
-              <h4 class="text-xl font-semibold text-foreground mb-2 text-center">
-                {t('contact.cta.headline')}
+            <div
+              class="flex flex-col justify-center items-center bg-primary/5 rounded-lg p-8"
+            >
+              <MessageCircle
+                client:load
+                className="w-16 h-16 text-primary mb-4"
+              />
+              <h4
+                class="text-xl font-semibold text-foreground mb-2 text-center"
+              >
+                {t("contact.cta.headline")}
               </h4>
               <p class="text-muted-foreground text-center mb-6">
-                {t('contact.cta.description')}
+                {t("contact.cta.description")}
               </p>
-              <Button size="lg" className="w-full gap-2 whatsapp-button bg-secondary text-secondary-foreground hover:bg-secondary/80 shadow-md shadow-secondary/50 transition-all duration-300" client:load>
+              <Button
+                size="lg"
+                className="w-full gap-2 whatsapp-button bg-secondary text-secondary-foreground hover:bg-secondary/80 shadow-md shadow-secondary/50 transition-all duration-300"
+                client:load
+              >
                 <MessageCircle className="w-4 h-4" />
-                {t('contact.cta.button')}
+                {t("contact.cta.button")}
               </Button>
             </div>
           </div>
@@ -104,9 +132,9 @@ const emailAddress = "effie.physio@gmail.com";
 
 <script>
   const whatsAppButtons = document.querySelectorAll(".whatsapp-button");
-  whatsAppButtons.forEach(button => {
+  whatsAppButtons.forEach((button) => {
     button.addEventListener("click", () => {
-      window.open("https://wa.me/972500000000", "_blank");
+      window.open("https://wa.me/972525831644", "_blank");
     });
   });
 </script>
