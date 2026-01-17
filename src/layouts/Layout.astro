@@ -8,6 +8,7 @@ import {
 	languages,
 	useTranslatedPath,
 } from "../i18n/utils";
+import Analytics from "@vercel/analytics/astro";
 
 export interface Props {
 	title: string;
@@ -142,5 +143,6 @@ const currentPath = Astro.url.pathname.replace(/\/[a-z]{2}\//, "/");
 	</head>
 	<body class={lang === "he" ? "font-arimo" : ""}>
 		<slot />
+		<Analytics />
 	</body>
 </html>
