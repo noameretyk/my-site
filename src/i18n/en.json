@@ -36,7 +36,10 @@
   "services.orthopedicConditions.description": "Workshops for coaches and captains covering communication, shared values, and psychologically safe locker rooms.",
 
   "services.title": "Sports Psychology Services",
-  "services.description": "Customized mental performance programs for teams and athletes who want consistency and confidence in training and competition.\n• One-off workshops for teams\n• Group mental coaching\n• Individual mental coaching for athletes and coaches",
+  "services.description": "Customized mental performance programs for teams and athletes who want consistency and confidence in training and competition.",
+  "services.bullets.one": "One-off workshops for teams",
+  "services.bullets.two": "Group mental coaching",
+  "services.bullets.three": "Individual mental coaching for athletes and coaches",
 
   "testimonials.title": "Athlete Success Stories",
   "testimonials.description": "Real conversations about what happens when the mental game clicks.",

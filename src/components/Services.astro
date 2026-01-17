@@ -25,9 +25,23 @@ const t = useTranslations(lang);
       <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">
         {t("services.title")}
       </h2>
-      <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+      <p class="text-lg text-muted-foreground max-w-2xl mx-auto mb-6">
         {t("services.description")}
       </p>
+      <ul class="text-lg text-muted-foreground max-w-2xl mx-auto space-y-2">
+        <li class="flex items-center justify-center gap-2">
+          <span class="text-primary font-bold">•</span>
+          {t("services.bullets.one")}
+        </li>
+        <li class="flex items-center justify-center gap-2">
+          <span class="text-primary font-bold">•</span>
+          {t("services.bullets.two")}
+        </li>
+        <li class="flex items-center justify-center gap-2">
+          <span class="text-primary font-bold">•</span>
+          {t("services.bullets.three")}
+        </li>
+      </ul>
     </div>
 
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">

@@ -1,7 +1,7 @@
 ---
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { MessageCircle, Mail, MapPin } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
@@ -31,31 +31,6 @@ const emailAddress = "hello@noameretyk.com";
               </h3>
 
               <ul class="space-y-6">
-                <li>
-                  <div class="flex items-start gap-3">
-                    <MessageCircle
-                      client:load
-                      className="w-6 h-6 text-primary mt-1"
-                    />
-                    <div>
-                      <p class="font-semibold text-foreground mb-1">
-                        {t("contact.whatsapp.title")}
-                      </p>
-                      <p class="text-muted-foreground">
-                        {t("contact.whatsapp.description")}
-                      </p>
-                      <Button
-                        variant="link"
-                        className="p-0 h-auto text-primary whatsapp-button"
-                        onClick={() => window.location.href = `mailto:hello@noameretyk.com`}
-                        client:load
-                      >
-                        {t("contact.whatsapp.button")}
-                      </Button>
-                    </div>
-                  </div>
-                </li>
-
                 <li>
                   <div class="flex items-start gap-3">
                     <Mail client:load className="w-6 h-6 text-primary mt-1" />
