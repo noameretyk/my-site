@@ -1,13 +1,12 @@
 ---
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { MessageCircle, Mail, MapPin, Phone } from "lucide-react";
+import { MessageCircle, Mail, MapPin } from "lucide-react";
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const phoneNumber = "+972 54-213-2566";
 const emailAddress = "hello@noameretyk.com";
 ---
 
@@ -58,24 +57,20 @@ const emailAddress = "hello@noameretyk.com";
 
                 <li>
                   <div class="flex items-start gap-3">
-                    <Phone client:load className="w-6 h-6 text-primary mt-1" />
-                    <div>
-                      <p class="font-semibold text-foreground mb-1">
-                        {t("contact.phone.title")}
-                      </p>
-                      <p class="text-muted-foreground">{phoneNumber}</p>
-                    </div>
-                  </div>
-                </li>
-
-                <li>
-                  <div class="flex items-start gap-3">
                     <Mail client:load className="w-6 h-6 text-primary mt-1" />
                     <div>
                       <p class="font-semibold text-foreground mb-1">
                         {t("contact.email.title")}
                       </p>
-                      <p class="text-muted-foreground">{emailAddress}</p>
+                      <p class="text-muted-foreground">{t("contact.email.description")}</p>
+                      <Button
+                        variant="link"
+                        className="p-0 h-auto text-primary"
+                        onClick={() => window.location.href = `mailto:${emailAddress}`}
+                        client:load
+                      >
+                        {t("contact.email.button")}
+                      </Button>
                     </div>
                   </div>
                 </li>
@@ -102,7 +97,7 @@ const emailAddress = "hello@noameretyk.com";
             <div
               class="flex flex-col justify-center items-center bg-primary/5 rounded-lg p-8"
             >
-              <MessageCircle
+              <Mail
                 client:load
                 className="w-16 h-16 text-primary mb-4"
               />
@@ -116,10 +111,11 @@ const emailAddress = "hello@noameretyk.com";
               </p>
               <Button
                 size="lg"
-                className="w-full gap-2 whatsapp-button bg-secondary text-secondary-foreground hover:bg-secondary/80 shadow-md shadow-secondary/50 transition-all duration-300"
+                className="w-full gap-2 bg-secondary text-secondary-foreground hover:bg-secondary/80 shadow-md shadow-secondary/50 transition-all duration-300"
+                onClick={() => window.location.href = `mailto:${emailAddress}`}
                 client:load
               >
-                <MessageCircle className="w-4 h-4" />
+                <Mail className="w-4 h-4" />
                 {t("contact.cta.button")}
               </Button>
             </div>
@@ -131,10 +127,5 @@ const emailAddress = "hello@noameretyk.com";
 </section>
 
 <script>
-  const whatsAppButtons = document.querySelectorAll(".whatsapp-button");
-  whatsAppButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      window.open("https://wa.me/972525831644", "_blank");
-    });
-  });
+  // Email buttons will use native mailto functionality via onClick handlers
 </script>
