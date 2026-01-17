@@ -1,5 +1,5 @@
 {
-  "schema.name": "נועה מרתיק | פסיכולוגיית ספורט",
+  "schema.name": "נעה מרטיק | פסיכולוגיית ספורט",
   "schema.description": "פסיכולוגית ספורט בתל אביב המעניקה אימוני מיינדסט, כלים לניהול לחץ ותמיכה בתקופת חזרה למגרש עבור ספורטאים חובבים ומקצוענים.",
   "schema.address.streetAddress": "רחוב דיזנגוף 120",
   "schema.address.addressLocality": "תל אביב",
@@ -10,8 +10,8 @@
   "schema.offerCatalog.postStroke": "כישורים מנטליים לשיקום",
   "schema.offerCatalog.orthopedicConditions": "סדנאות תרבות ומנהיגות לקבוצות",
 
-  "site.title": "פסיכולוגיית ספורט בתל אביב | נועה מרתיק",
-  "site.description": "פוגשים את הלחץ עם ביטחון. נועה מרתיק מלווה ספורטאים, מאמנים וצוותים בכל שלבי העונה עם תכניות מנטליות מבוססות מחקר.",
+  "site.title": "פסיכולוגיית ספורט בתל אביב | נעה מרטיק",
+  "site.description": "פוגשים את הלחץ עם ביטחון. נעה מרטיק מלווה ספורטאים, מאמנים וצוותים בכל שלבי העונה עם תכניות מנטליות מבוססות מחקר.",
 
   "blog.pageTitle": "בלוג",
   "blog.pageDescription": "תובנות וכלים לחיזוק המשחק המנטלי שלך.",
@@ -46,9 +46,9 @@
   "hero.bookAppointment": "קבעו שיחה",
   "hero.learnMore": "גלו את השירותים",
 
-  "about.imageAlt": "נועה מרתיק, פסיכולוגית ספורט",
-  "about.title": "הכירו את נועה מרתיק",
-  "about.description": "נועה משלבת הכשרה קלינית עם ניסיון במגרש, ומפתחת שגרות מעשיות לביטחון, פוקוס והתאוששות לכל רמות התחרות.",
+  "about.imageAlt": "נעה מרטיק, פסיכולוגית ספורט",
+  "about.title": "הכירו את נעה מרטיק",
+  "about.description": "נעה משלבת הכשרה קלינית עם ניסיון במגרש, ומפתחת שגרות מעשיות לביטחון, פוקוס והתאוששות לכל רמות התחרות.",
   "about.educated.title": "פסיכולוגית ספורט מוסמכת",
   "about.educated.description": "M.A בפסיכולוגיה של ספורט וביצועים, הסמכת CMPC",
   "about.bilingual.title": "ליווי דו-לשוני",
@@ -87,7 +87,7 @@
   "faq.q4.question": "האם הכל חסוי?",
   "faq.q4.answer": "בהחלט. המפגשים מתנהלים לפי הסטנדרט המקצועי של פסיכולוגיה, והמידע משותף עם מאמנים או הורים רק באישורכם.",
 
-  "footer.title": "נועה מרתיק | פסיכולוגיית ספורט",
+  "footer.title": "נעה מרטיק | פסיכולוגיית ספורט",
   "footer.description": "אימון מנטלי, כישורי ביצוע ומנהיגות עבור הרגעים שקובעים.",
   "footer.quickLinks.title": "קישורים מהירים",
   "footer.quickLinks.services": "שירותים",
@@ -97,10 +97,10 @@
   "footer.languages.title": "שפות",
   "footer.languages.text": "English | עברית",
   "footer.languages.description": "מפגשים נוחים באנגלית ובעברית.",
-  "footer.copyright": "© {year} נועה מרתיק. כל הזכויות שמורות.",
+  "footer.copyright": "© {year} נעה מרטיק. כל הזכויות שמורות.",
   "footer.degrees": "M.A פסיכולוגיית ספורט וביצועים | פסיכולוגית מוסמכת",
 
-  "header.title": "נועה מרתיק | פסיכולוגיית ספורט",
+  "header.title": "נעה מרטיק | פסיכולוגיית ספורט",
   "header.services": "שירותים",
   "header.about": "אודות",
   "header.testimonials": "המלצות",
@@ -112,10 +112,10 @@
 
   "testimonials.sarah.name": "מאיה ר.",
   "testimonials.sarah.condition": "שחיינית אולימפית",
-  "testimonials.sarah.quote": "נועה עזרה לי לבנות מחדש טקס לפני הזינוק. אני עולה למסלול רגועה ומכוונת במקום להילחץ מכל תרחיש.",
+  "testimonials.sarah.quote": "נעה עזרה לי לבנות מחדש טקס לפני הזינוק. אני עולה למסלול רגועה ומכוונת במקום להילחץ מכל תרחיש.",
   "testimonials.david.name": "עומרי ש.",
   "testimonials.david.condition": "שיקום ACL, ליגת העל",
-  "testimonials.david.quote": "העבודה עם נועה הפכה את השיקום ממיאוס למשמעות. חזרתי למגרש עם אמון בגוף ובקבלת ההחלטות שלי.",
+  "testimonials.david.quote": "העבודה עם נעה הפכה את השיקום ממיאוס למשמעות. חזרתי למגרש עם אמון בגוף ובקבלת ההחלטות שלי.",
   "testimonials.rachel.name": "המאמנת ליאת",
   "testimonials.rachel.condition": "קבוצת כדורסל נערות",
   "testimonials.rachel.quote": "הסדנאות נתנו לנו שפה ברורה לאחריות בלי פחד. חדר ההלבשה מחובר, וזה נראה גם על הפרקט."

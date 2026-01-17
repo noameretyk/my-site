@@ -88,7 +88,7 @@ const Header: React.FC<HeaderProps> = ({ lang }) => {
   };
 
   const logoSrc = lang === 'he' ? "/logo_hebrew_white.png" : "/logo_english_white.png";
-  const logoAlt = lang === 'he' ? "נועה מרתיק | פסיכולוגיית ספורט" : "Noa Meretyk | Sports Psychology";
+  const logoAlt = lang === 'he' ? "נעה מרטיק | פסיכולוגיית ספורט" : "Noa Meretyk | Sports Psychology";
 
   return (
     <header
