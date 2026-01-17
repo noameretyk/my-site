@@ -47,6 +47,7 @@ const emailAddress = "hello@noameretyk.com";
                       <Button
                         variant="link"
                         className="p-0 h-auto text-primary whatsapp-button"
+                        onClick={() => window.location.href = `mailto:hello@noameretyk.com`}
                         client:load
                       >
                         {t("contact.whatsapp.button")}

@@ -59,7 +59,7 @@ const Header: React.FC<HeaderProps> = ({ lang }) => {
   }, []);
 
   const handleWhatsAppClick = () => {
-    window.open("https://wa.me/972525831644", "_blank");
+    window.location.href = "mailto:hello@noameretyk.com";
   };
 
   const changeLanguage = (newLang: HeaderLang) => {
