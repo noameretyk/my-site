@@ -1,0 +1,43 @@
+---
+import FaqAccordion from "@/components/FaqAccordion.tsx";
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const faqs = [
+  {
+    question: t('faq.q1.question'),
+    answer: t('faq.q1.answer'),
+  },
+  {
+    question: t('faq.q2.question'),
+    answer: t('faq.q2.answer'),
+  },
+  {
+    question: t('faq.q3.question'),
+    answer: t('faq.q3.answer'),
+  },
+  {
+    question: t('faq.q4.question'),
+    answer: t('faq.q4.answer'),
+  },
+];
+---
+
+<section id="faq" class="py-20 bg-background">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">
+        {t('faq.headline')}
+      </h2>
+      <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+        {t('faq.subheadline')}
+      </p>
+    </div>
+
+    <div class="max-w-3xl mx-auto">
+      <FaqAccordion faqs={faqs} client:visible />
+    </div>
+  </div>
+</section>

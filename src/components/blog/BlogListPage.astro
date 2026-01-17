@@ -1,0 +1,118 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Header from "@/components/Header.tsx";
+import Layout from "@/layouts/Layout.astro";
+import { useTranslations } from "@/i18n/utils";
+
+export interface Props {
+  lang: "en" | "he";
+  blogPosts: CollectionEntry<"blog">[];
+}
+
+const { lang, blogPosts } = Astro.props;
+const activeLang = lang === "he" ? "he" : "en";
+const t = useTranslations(activeLang);
+
+const dateFormatter = new Intl.DateTimeFormat(
+  activeLang === "he" ? "he-IL" : "en-US",
+  { month: "long", day: "numeric", year: "numeric" },
+);
+
+const basePath = activeLang === "en" ? "/blog" : `/${activeLang}/blog`;
+---
+
+<Layout title={t("blog.pageTitle")} description={t("blog.pageDescription")}>
+  <Header client:load lang={activeLang} />
+  <main>
+    <section class="relative overflow-hidden pt-40 pb-24 text-white">
+      <div class="absolute inset-0 header-background"></div>
+      <div class="container relative z-10 mx-auto px-4 text-center">
+        <div class="mx-auto max-w-3xl">
+          <p
+            class="mb-4 inline-flex items-center justify-center rounded-full bg-white/10 px-4 py-1 text-sm font-medium uppercase tracking-wide text-white/80 backdrop-blur-sm"
+          >
+            {t("blog.kicker")}
+          </p>
+          <h1 class="text-3xl font-bold leading-tight md:text-5xl">
+            {t("blog.headline")}
+          </h1>
+          <p class="mt-6 text-base text-white/80 md:text-lg">
+            {t("blog.subheadline")}
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="bg-gradient-to-b from-background via-accent/10 to-background py-20"
+    >
+      <div class="container mx-auto px-4">
+        {
+          blogPosts.length === 0 ? (
+            <div class="mx-auto max-w-2xl rounded-2xl border border-dashed border-border/60 bg-card/40 p-12 text-center shadow-sm shadow-primary/10">
+              <h2 class="text-2xl font-semibold text-foreground">
+                {t("blog.empty.title")}
+              </h2>
+              <p class="mt-4 text-muted-foreground">
+                {t("blog.empty.description")}
+              </p>
+            </div>
+          ) : (
+            <ul class="mx-auto flex flex-col max-w-5xl gap-8">
+              {blogPosts.map((post) => (
+                <li class="w-full">
+                  <a href={`${basePath}/${post.slug}`}>
+                    <article class="group relative h-full overflow-hidden rounded-3xl border border-border/60 bg-card/95 p-8 shadow-sm shadow-primary/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10">
+                      <div class="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary via-secondary to-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                      <div class="flex h-full flex-col gap-6">
+                        <div class="space-y-3">
+                          <div class="flex justify-between">
+                            <span class="text-2xl font-semibold text-foreground transition-colors duration-300 group-hover:text-primary">
+                              {post.data.title}
+                            </span>
+                            <time
+                              datetime={post.data.publishDate.toISOString()}
+                              class="text-sm font-semibold uppercase tracking-wide text-primary/80"
+                            >
+                              {dateFormatter.format(post.data.publishDate)}
+                            </time>
+                          </div>
+                          <p class="text-base text-muted-foreground">
+                            {post.data.description}
+                          </p>
+                        </div>
+                        <div class="mt-auto">
+                          <a
+                            href={`${basePath}/${post.slug}`}
+                            class="inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors duration-300 hover:text-primary/80"
+                          >
+                            {t("blog.card.readMore")}
+                            {lang === "en" ? (
+                              <span
+                                aria-hidden="true"
+                                class="transition-transform duration-300 group-hover:translate-x-1"
+                              >
+                                →
+                              </span>
+                            ) : (
+                              <span
+                                aria-hidden="true"
+                                class="transition-transform duration-300 group-hover:translate-x-1"
+                              >
+                                ←
+                              </span>
+                            )}
+                          </a>
+                        </div>
+                      </div>
+                    </article>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )
+        }
+      </div>
+    </section>
+  </main>
+</Layout>

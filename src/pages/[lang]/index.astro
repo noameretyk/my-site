@@ -1,0 +1,17 @@
+---
+import HomePage from '../../components/pages/HomePage.astro';
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'he' } },
+  ];
+}
+
+const { lang } = Astro.params;
+
+if (lang !== 'he') {
+  throw new Error('Unsupported locale');
+}
+---
+
+<HomePage lang="he" />

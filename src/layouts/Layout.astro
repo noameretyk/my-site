@@ -1,0 +1,146 @@
+---
+import placeholderImage from '../../public/placeholder.svg';
+import "../styles/global.css";
+import {
+	getLangFromUrl,
+	useTranslations,
+	defaultLang,
+	languages,
+	useTranslatedPath,
+} from "../i18n/utils";
+
+export interface Props {
+	title: string;
+	description: string;
+	image?: string;
+}
+
+const { title, description, image = placeholderImage.src } = Astro.props;
+const phoneNumber = "+972-50-000-0000";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const dir = lang === "he" ? "rtl" : "ltr";
+const translatePath = useTranslatedPath(lang);
+
+const currentPath = Astro.url.pathname.replace(/\/[a-z]{2}\//, "/");
+---
+
+<!doctype html>
+<html lang={lang} dir={dir}>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<meta name="description" content={description} />
+
+		{
+			Object.keys(languages).map((locale) => (
+				<link
+					rel="alternate"
+					hreflang={locale}
+					href={new URL(translatePath(currentPath, locale), Astro.url.origin)}
+				/>
+			))
+		}
+		<link
+			rel="alternate"
+			hreflang="x-default"
+			href={new URL(translatePath(currentPath, defaultLang), Astro.url.origin)}
+		/>
+
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "Physiotherapy",
+				"name": "{t('schema.name')}",
+				"description": "{t('schema.description')}",
+				"url": "https://www.pt-tlv.com",
+				"image": "https://www.pt-tlv.com/_astro/headshot.KghQ-GDN_abifr.webp",
+				"telephone": "{phoneNumber}",
+				"email": "effie@physiotherapy.co.il",
+				"founder": {
+					"@type": "Person",
+					"name": "Effie Beniacar", // Assuming this is the full name
+					"url": "https://www.pt-tlv.com/about", // Link to an about page for Effie
+					"image": "https://www.pt-tlv.com/_astro/headshot.KghQ-GDN_abifr.webp",
+					"jobTitle": "Physiotherapist"
+				},
+				"address": {
+					"@type": "PostalAddress",
+					"streetAddress": "{t('schema.address.streetAddress')}",
+					"addressLocality": "{t('schema.address.addressLocality')}",
+					"addressCountry": "{t('schema.address.addressCountry')}"
+				},
+				"openingHoursSpecification": [
+					{
+						"@type": "OpeningHoursSpecification",
+						"dayOfWeek": [
+							"Monday",
+							"Tuesday",
+							"Wednesday",
+							"Thursday",
+							"Sunday"
+						],
+						"opens": "09:00",
+						"closes": "18:00"
+					}
+				],
+				"hasOfferCatalog": {
+					"@type": "OfferCatalog",
+					"name": "{t('schema.offerCatalog.name')}",
+					"itemListElement": [
+						{
+							"@type": "Offer",
+							"itemOffered": {
+								"@type": "Service",
+								"name": "{t('schema.offerCatalog.sportsInjury')}"
+							}
+						},
+						{
+							"@type": "Offer",
+							"itemOffered": {
+								"@type": "Service",
+								"name": "{t('schema.offerCatalog.postOperative')}"
+							}
+						},
+						{
+							"@type": "Offer",
+							"itemOffered": {
+								"@type": "Service",
+								"name": "{t('schema.offerCatalog.postStroke')}"
+							}
+						},
+						{
+							"@type": "Offer",
+							"itemOffered": {
+								"@type": "Service",
+								"name": "{t('schema.offerCatalog.orthopedicConditions')}"
+							}
+						}
+					]
+				},
+				"sameAs": ["https://wa.me/972500000000"]
+			}
+		</script>
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={Astro.url} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={new URL(image, Astro.url)} />
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={Astro.url} />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content={new URL(image, Astro.url)} />
+	</head>
+	<body class={lang === "he" ? "font-arimo" : ""}>
+		<slot />
+	</body>
+</html>

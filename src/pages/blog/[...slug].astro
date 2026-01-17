@@ -1,0 +1,23 @@
+---
+import { getCollection } from 'astro:content';
+import BlogPostPage from '../../components/blog/BlogPostPage.astro';
+import { getLangFromUrl } from '../../i18n/utils';
+
+export async function getStaticPaths() {
+  const blogPosts = await getCollection('blog');
+  return blogPosts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const lang = getLangFromUrl(Astro.url);
+const activeLang = lang === 'he' ? 'he' : 'en';
+---
+
+<BlogPostPage lang={activeLang} post={post}>
+  <Content slot="content" />
+</BlogPostPage>

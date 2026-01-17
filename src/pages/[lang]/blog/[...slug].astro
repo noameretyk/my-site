@@ -1,0 +1,25 @@
+---
+import { getCollection } from 'astro:content';
+import BlogPostPage from '../../../components/blog/BlogPostPage.astro';
+
+export async function getStaticPaths() {
+  const blogPosts = await getCollection('blog');
+  return blogPosts.map((post) => ({
+    params: { lang: 'he', slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { lang } = Astro.params;
+
+if (lang !== 'he') {
+  throw new Error('Unsupported locale');
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<BlogPostPage lang="he" post={post}>
+  <Content slot="content" />
+</BlogPostPage>

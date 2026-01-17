@@ -1,0 +1,74 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.tsx';
+import Hero from '../../components/Hero.astro';
+import About from '../../components/About.astro';
+import Services from '../../components/Services.astro';
+import Testimonials from '../../components/Testimonials.astro';
+import Contact from '../../components/Contact.astro';
+import Faq from '../../components/Faq.astro';
+import Footer from '../../components/Footer.astro';
+import { Activity, Brain, Heart, Stethoscope } from "lucide-react";
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const services = [
+    {
+      icon: Activity,
+      title: t('services.sportsInjury.title'),
+      description: t('services.sportsInjury.description'),
+    },
+    {
+      icon: Heart,
+      title: t('services.postOperative.title'),
+      description: t('services.postOperative.description'),
+    },
+    {
+      icon: Brain,
+      title: t('services.postStroke.title'),
+      description: t('services.postStroke.description'),
+    },
+    {
+      icon: Stethoscope,
+      title: t('services.orthopedicConditions.title'),
+      description: t('services.orthopedicConditions.description'),
+    },
+  ];
+
+const testimonials = [
+    {
+      name: t('testimonials.sarah.name'),
+      condition: t('testimonials.sarah.condition'),
+      quote: t('testimonials.sarah.quote'),
+      rating: 5,
+    },
+    {
+      name: t('testimonials.david.name'),
+      condition: t('testimonials.david.condition'),
+      quote: t('testimonials.david.quote'),
+      rating: 5,
+    },
+    {
+      name: t('testimonials.rachel.name'),
+      condition: t('testimonials.rachel.condition'),
+      quote: t('testimonials.rachel.quote'),
+      rating: 5,
+    },
+  ];
+---
+
+<Layout 
+	title={t('site.title')}
+	description={t('site.description')}
+>
+	<Header client:load lang={lang} />
+	<Hero />
+	<About />
+	<Services services={services} />
+	<Testimonials testimonials={testimonials} />
+	<Contact />
+	<Faq />
+	<Footer />
+</Layout>

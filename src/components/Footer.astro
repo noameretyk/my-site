@@ -1,0 +1,90 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<footer class="bg-primary text-primary-foreground py-12">
+  <div class="container mx-auto px-4">
+    <div class="grid md:grid-cols-3 gap-8 mb-8">
+      <div>
+        <h3 class="text-xl font-bold mb-4">{t('footer.title')}</h3>
+        <p class="opacity-90 leading-relaxed">
+          {t('footer.description')}
+        </p>
+      </div>
+
+      <div>
+        <h4 class="font-semibold mb-4">{t('footer.quickLinks.title')}</h4>
+        <ul class="space-y-2">
+          <li>
+            <a
+              href="#services"
+              data-scroll-to
+              class="block opacity-90 hover:opacity-100 transition-opacity"
+            >
+              {t('footer.quickLinks.services')}
+            </a>
+          </li>
+          <li>
+            <a
+              href="#about"
+              data-scroll-to
+              class="block opacity-90 hover:opacity-100 transition-opacity"
+            >
+              {t('footer.quickLinks.about')}
+            </a>
+          </li>
+          <li>
+            <a
+              href="#testimonials"
+              data-scroll-to
+              class="block opacity-90 hover:opacity-100 transition-opacity"
+            >
+              {t('footer.quickLinks.testimonials')}
+            </a>
+          </li>
+          <li>
+            <a
+              href="#contact"
+              data-scroll-to
+              class="block opacity-90 hover:opacity-100 transition-opacity"
+            >
+              {t('footer.quickLinks.contact')}
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-semibold mb-4">{t('footer.languages.title')}</h4>
+        <p class="opacity-90 mb-4">{t('footer.languages.text')}</p>
+        <p class="text-sm opacity-75">
+          {t('footer.languages.description')}
+        </p>
+      </div>
+    </div>
+
+    <div class="border-t border-primary-foreground/20 pt-8 text-center">
+      <p class="text-sm opacity-75">
+        {t('footer.copyright', { year: new Date().getFullYear() })}
+      </p>
+      <p class="text-xs opacity-60 mt-2">
+        {t('footer.degrees')}
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll("[data-scroll-to]").forEach(link => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      const id = link.getAttribute("href");
+      if (id) {
+        document.getElementById(id.substring(1))?.scrollIntoView({ behavior: "smooth" });
+      }
+    });
+  });
+</script>

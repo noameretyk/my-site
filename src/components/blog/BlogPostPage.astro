@@ -1,0 +1,129 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from "astro:content";
+import Header from "@/components/Header.tsx";
+import Layout from "@/layouts/Layout.astro";
+import { useTranslations } from "@/i18n/utils";
+
+export interface Props {
+  lang: "en" | "he";
+  post: CollectionEntry<"blog">;
+}
+
+const { lang, post } = Astro.props;
+const activeLang = lang === "he" ? "he" : "en";
+const t = useTranslations(activeLang);
+
+const dateFormatter = new Intl.DateTimeFormat(
+  activeLang === "he" ? "he-IL" : "en-US",
+  { month: "long", day: "numeric", year: "numeric" },
+);
+
+const basePath = activeLang === "en" ? "/blog" : `/${activeLang}/blog`;
+---
+
+<Layout title={post.data.title} description={post.data.description}>
+  <Header client:load lang={activeLang} />
+  <main>
+    <section class="relative overflow-hidden pt-36 pb-20 text-white">
+      <div class="absolute inset-0 header-background"></div>
+      <div class="container relative z-10 mx-auto px-4 text-center">
+        <div class="flex justify-center">
+          <a
+            href={basePath}
+            class="inline-flex items-center gap-2 text-sm font-semibold text-white/80 transition-colors duration-300 hover:text-white"
+          >
+            {
+              lang === "en" ? (
+                <span aria-hidden="true">←</span>
+              ) : (
+                <span aria-hidden="true">→</span>
+              )
+            }
+            {t("blog.post.backToAll")}
+          </a>
+        </div>
+        <h1 class="mt-10 text-3xl font-bold leading-tight md:text-5xl">
+          {post.data.title}
+        </h1>
+        <div
+          class="mt-6 flex flex-wrap items-center justify-center gap-4 text-sm text-white/80"
+        >
+          <time datetime={post.data.publishDate.toISOString()}>
+            {dateFormatter.format(post.data.publishDate)}
+          </time>
+          <span aria-hidden="true" class="h-4 w-px bg-white/40"></span>
+          <p class="font-medium">
+            {t("blog.post.by")}
+            {post.data.author}
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="bg-gradient-to-b from-background via-accent/10 to-background py-20"
+    >
+      <div class="container mx-auto px-4">
+        <article
+          class="mx-auto max-w-3xl overflow-hidden rounded-3xl border border-border/60 bg-card/95 shadow-md shadow-primary/10"
+        >
+          {
+            post.data.image && (
+              <figure class="overflow-hidden border-b border-border/60 bg-muted/40">
+                <Image
+                  src={post.data.image}
+                  alt={post.data.title}
+                  width={1024}
+                  height={576}
+                  class="h-72 w-full object-cover"
+                  loading="lazy"
+                />
+              </figure>
+            )
+          }
+          <div class="px-6 py-10 md:px-10">
+            <div
+              class="markdown-content space-y-6 text-base text-muted-foreground md:text-lg"
+            >
+              <slot name="content" />
+            </div>
+          </div>
+        </article>
+
+        <div
+          class="mx-auto mt-12 flex max-w-3xl flex-wrap items-center justify-center gap-6 text-sm font-semibold text-primary"
+        >
+          <a
+            href={basePath}
+            class="inline-flex items-center gap-2 transition-colors duration-300 hover:text-primary/80"
+          >
+            {
+              lang === "en" ? (
+                <span aria-hidden="true">←</span>
+              ) : (
+                <span aria-hidden="true">→</span>
+              )
+            }
+            {t("blog.post.back")}
+          </a>
+          <a
+            href="https://wa.me/972500000000"
+            target="_blank"
+            rel="noopener"
+            class="inline-flex items-center gap-2 transition-colors duration-300 hover:text-primary/80"
+          >
+            {t("blog.post.cta")}
+            {
+              lang === "en" ? (
+                <span aria-hidden="true">→</span>
+              ) : (
+                <span aria-hidden="true">←</span>
+              )
+            }
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

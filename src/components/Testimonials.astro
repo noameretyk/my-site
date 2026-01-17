@@ -1,0 +1,44 @@
+---
+import TestimonialCard from "@/components/TestimonialCard.tsx";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+
+interface Testimonial {
+  name: string;
+  condition: string;
+  quote: string;
+  rating: number;
+}
+
+export interface Props {
+  testimonials: Testimonial[];
+}
+
+const { testimonials } = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section
+  id="testimonials"
+  class="py-20 bg-gradient-to-b from-background to-accent"
+>
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">
+        {t("testimonials.title")}
+      </h2>
+      <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+        {t("testimonials.description")}
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      {
+        testimonials.map((testimonial, index) => (
+          <TestimonialCard {...testimonial} client:visible />
+        ))
+      }
+    </div>
+  </div>
+</section>
