@@ -28,19 +28,10 @@ const t = useTranslations(lang);
       <p class="text-lg text-muted-foreground max-w-2xl mx-auto mb-6">
         {t("services.description")}
       </p>
-      <ul class={`text-lg text-muted-foreground max-w-2xl mx-auto space-y-2 ${lang === 'he' ? 'text-right' : 'text-left'}`}>
-        <li class={`flex items-center gap-2 ${lang === 'he' ? 'flex-row-reverse justify-end' : 'flex-row justify-start'}`}>
-          <span class="text-primary font-bold flex-shrink-0">•</span>
-          {t("services.bullets.one")}
-        </li>
-        <li class={`flex items-center gap-2 ${lang === 'he' ? 'flex-row-reverse justify-end' : 'flex-row justify-start'}`}>
-          <span class="text-primary font-bold flex-shrink-0">•</span>
-          {t("services.bullets.two")}
-        </li>
-        <li class={`flex items-center gap-2 ${lang === 'he' ? 'flex-row-reverse justify-end' : 'flex-row justify-start'}`}>
-          <span class="text-primary font-bold flex-shrink-0">•</span>
-          {t("services.bullets.three")}
-        </li>
+      <ul class={`text-lg text-muted-foreground max-w-2xl mx-auto space-y-2 list-disc ${lang === 'he' ? 'text-right pr-6' : 'text-left pl-6'}`}>
+        <li>{t("services.bullets.one")}</li>
+        <li>{t("services.bullets.two")}</li>
+        <li>{t("services.bullets.three")}</li>
       </ul>
     </div>
 
