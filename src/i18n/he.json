@@ -37,7 +37,8 @@
 
   "services.title": "שירותי פסיכולוגיית ספורט",
   "services.description": "תכניות ליווי מנטלי מותאמות אישית לקבוצות ולספורטאים שרוצים יציבות ובטחון באימון ומשחק.",
-  "services.bullets.one": "סדנאות חד פעמיות לקבוצות",
+  "services.bullets.one": "סדנאות והרצאות",
+  "services.bullets.one.description": "סדנאות והרצאות מותאמות אישית לקבוצות ספורט, אגודות ומאמנים",
   "services.bullets.two": "ליווי מנטלי קבוצתי",
   "services.bullets.three": "ליווי מנטלי אישי לספורטאים ומאמנים",
   "testimonials.title": "סיפורי הצלחה של ספורטאים",
